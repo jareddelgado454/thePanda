@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Sidebar } from "@/components/Sidebar";
+import { robotoFlex } from "./font";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +13,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="flex w-full h-screen">
+        <Sidebar />
+        <div className={`${robotoFlex.className} antialiased home_content dark:bg-zinc-800 text-white`}>
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

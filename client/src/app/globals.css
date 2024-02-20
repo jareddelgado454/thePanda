@@ -16,18 +16,34 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.sidebar {
+  width: 78px;
+  z-index: 99;
+}
+
+.sidebar.active {
+  width: 240px;
+}
+
+.home_content {
+  width: calc(100% - 78px);
+  left: 78px;
+}
+
+.sidebar.active ~ .home_content {
+  width: calc(100% - 240px);
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  left: 240px;
+}
+
+.sidebar.active ~ .home_content {
+  width: calc(100% - 240px);
+  left: 240px;
 }
