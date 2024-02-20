@@ -1,7 +1,7 @@
 "use client"
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { FaUser, FaUserGear, FaUserPen, FaChartSimple, FaGear, FaBars } from 'react-icons/fa6'
-
 export const Sidebar = () => {
     const [active, setActive] = useState(false);
 
@@ -22,10 +22,10 @@ export const Sidebar = () => {
             </p>
             <Separator />
             <ul className={`bg-green-panda shadow-xl transition-all rounded-md p-3 mt-4 ${active && 'w-full'}`}>
-                <li className='flex gap-3 items-center'>
+                <Link href={`/admin-dashboard/customers`} className='flex gap-3 items-center'>
                     <FaUser className='text-xl' />
                     <p className={`text-xl font-medium ${!active && 'hidden'}`}>Customers</p>
-                </li>
+                </Link>
                 <li className='flex gap-3 items-center mt-5'>
                     <FaUserGear className='text-xl' />
                     <p className={`text-xl font-medium ${!active && 'hidden'}`}>Technicians</p>
