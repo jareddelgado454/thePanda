@@ -51,3 +51,7 @@
   width: calc(100% - 240px);
   left: 240px;
 }
+
+.sidebar.active ~ .tab-pagination {
+  display: none;
+}
