@@ -12,10 +12,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="flex w-full h-screen">
-        <div className={`${robotoFlex.className} antialiased home_content dark:bg-zinc-800 text-white`}>
-          {children}
-        </div>
+      <body className={`${robotoFlex.className} antialiased dark:bg-zinc-800`}>
+        {
+          children
+        }
       </body>
     </html>
   );
