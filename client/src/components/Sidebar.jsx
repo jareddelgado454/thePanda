@@ -44,7 +44,7 @@ export const Sidebar = () => {
                         </li>
                         <li className='flex gap-3 items-center mt-5'>
                             <FaGear />
-                            <p className={`text-xl font-medium ${!active && 'hidden'}`}>Settings</p>
+                            <p className={`text-xl font-medium transition-all ${!active && 'hidden'}`}>Configuration</p>
                         </li>
                     </ul>
                 </div>
