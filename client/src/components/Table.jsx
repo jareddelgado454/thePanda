@@ -7,9 +7,9 @@ import { Customers } from '../assets/data/Customer';
 
 export const Table = () => {
   return (
-    <div className="relative overflow-x-auto rounded-md shadow-lg">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase rounded-md bg-gray-50 dark:bg-white dark:text-gray-800">
+    <div className="relative overflow-x-auto rounded-md shadow-lg ">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500  transition-all">
+            <thead className="text-xs text-gray-700 dark:text-white uppercase rounded-md bg-gray-50 dark:bg-zinc-800">
                 <tr>
                     <th scope="col" className="px-6 py-3 w-20">
                         IMAGE
@@ -34,7 +34,7 @@ export const Table = () => {
             <tbody>
                 {
                     Customers.map((Customer, i) => (
-                        <tr className="bg-white border-b dark:bg-gray-200 dark:border-gray-300 dark:text-gray-800 dark:font-medium"
+                        <tr className={`bg-white border-b ${i % 2 === 0 ? 'dark:bg-zinc-900' : 'dark:bg-zinc-800'} dark:border-[#40C48E] dark:text-white dark:font-medium`}
                             key={i}
                         >
                             <th
@@ -69,13 +69,13 @@ export const Table = () => {
                                 <div className='flex gap-4'>
                                     <button
                                         type='button'
-                                        className='dark:bg-rose-500 p-2 rounded dark:text-white'
+                                        className='bg-rose-500 p-2 rounded text-white'
                                     >
                                         <FaTrashCan />
                                     </button>
                                     <button
                                         type='button'
-                                        className='dark:bg-yellow-400 p-2 rounded dark:text-white'
+                                        className='bg-yellow-400 p-2 rounded text-white'
                                     >
                                         <FaPencil />
                                     </button>

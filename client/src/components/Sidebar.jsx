@@ -9,7 +9,7 @@ export const Sidebar = () => {
         setActive(!active); // Cambiar el estado activo
     };
   return (
-    <div className={`sidebar dark:bg-zinc-800 text-white transition-all ease-out duration-500 ${active ? 'active' : null}`}>
+    <div className={`sidebar bg-zinc-600 dark:bg-zinc-800 text-white transition-all ease-out duration-500 ${active ? 'active' : null}`}>
         <div className='flex flex-col items-center py-4 relative h-full px-4'>
             <div className={`w-full flex flex-row items-center ${active ? 'justify-between': 'justify-center'}`}>
                 <FaBars id='btn' onClick={toggleSidebar} className='text-xl cursor-pointer' />
