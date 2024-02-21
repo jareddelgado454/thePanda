@@ -10,7 +10,7 @@ export default function AdminDashboardLayout ({children}) {
         <div className="flex w-full h-screen max-h-screen relative">
             <Sidebar />
             <div className="home_content transition-all ease-out duration-500 md:px-2 py-4">
-                <div className="text-white bg-slate-300 h-full rounded-lg dark:bg-green-panda overflow-hidden">
+                <div className="text-white bg-slate-300 h-full rounded-lg dark:bg-green-panda overflow-hidden p-6">
                 {
                     children
                 }
