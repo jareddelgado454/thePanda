@@ -4,14 +4,14 @@ import React from 'react'
 const Customers = () => {
   return (
     <div className='container mx-auto px-3'>
-      <p className='text-xl text-center md:text-left md:text-5xl font-bold py-6'>Customers Administration</p>
+      <p className='text-xl text-center md:text-left md:text-5xl font-bold py-6 tracking-[0.1em] drop-shadow-lg'>Customers Administration</p>
       {/* Todo: Cards */}
       {/* Todo: searchInput */}
       {/* Todo: Table */}
       <div className="flex w-full justify-between items-center gap-4 bg-white dark:bg-white rounded p-5 mb-6 shadow-md flex-wrap md:flex-nowrap">
         <div className="w-full flex gap-4 items-center flex-wrap md:flex-nowrap">
 
-          <label className="font-extrabold dark:text-black" htmlFor="search-input">
+          <label className="font-extrabold dark:text-black tracking-[0.2em]" htmlFor="search-input">
             Search
           </label>
           <input
@@ -31,7 +31,7 @@ const Customers = () => {
         <Table />
       </div>
       <div className='flex flex-col md:flex-row items-center justify-between w-full gap-4'>
-        <div className='flex flex-row items-center mt-4 dark:text-gray-800 font-medium tab-pagination'>
+        <div className='flex flex-row items-center mt-4 dark:text-gray-800 font-medium tab-pagination shadow-lg '>
           <span className='rounded-l-lg border-2 p-2 bg-gray-300'>Previous</span>
           <p className='p-2 bg-gray-300 border-y-2'>1</p>
           <p className='p-2 bg-gray-300 border-y-2'>2</p>
@@ -39,7 +39,7 @@ const Customers = () => {
           <p className='p-2 bg-gray-300 border-y-2'>4</p>
           <span className='rounded-r-lg border-2 p-2 bg-gray-300'>Next</span>
         </div>
-        <div className='flex gap-3'>
+        <div className='flex gap-3  drop-shadow-lg'>
           <p className='font-bold'>rows per page</p>
           <select name="" className='dark:text-black rounded' >
             <option value="0">0</option>
