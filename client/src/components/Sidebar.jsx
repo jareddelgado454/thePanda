@@ -46,10 +46,10 @@ export const Sidebar = () => {
                             <FaChartSimple className='text-xl transition-all ease-in-out hover:-translate-y-1 hover:scale-110 cursor-pointer' />
                             <p className={`text-xl font-medium ${!active && 'hidden'}`}>Charts</p>
                         </Link>
-                        <li className='flex gap-3 items-center mt-5'>
+                        <Link href={`/admin-dashboard/settings`} className='flex gap-3 items-center mt-5'>
                             <FaGear className='text-xl transition-all ease-in-out hover:-translate-y-1 hover:scale-110 cursor-pointer' />
                             <p className={`text-xl font-medium transition-all ${!active && 'hidden'}`}>Configuration</p>
-                        </li>
+                        </Link>
                     </ul>
                 </div>
                 <Separator />
