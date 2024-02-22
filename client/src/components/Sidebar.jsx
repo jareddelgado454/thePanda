@@ -12,7 +12,11 @@ export const Sidebar = () => {
     <div className={`sidebar bg-zinc-600 dark:bg-zinc-800 text-white transition-all ease-out duration-500 ${active ? 'active' : null}`}>
         <div className='flex flex-col items-center py-4 relative h-full px-4'>
             <div className={`w-full flex flex-row items-center ${active ? 'justify-between': 'justify-center'}`}>
-                <FaBars id='btn' onClick={toggleSidebar} className='text-xl cursor-pointer' />
+                <FaBars
+                    id='btn'
+                    onClick={toggleSidebar}
+                    className='text-xl cursor-pointer transition-all ease-in-out hover:-translate-y-1 hover:scale-110'
+                />
                 <p className={`font-bold drop-shadow-xl tracking-wider ${active ? 'block' : 'hidden'}`}>Panda CMS</p>
                 <img src="/panda.png" className={`w-[5rem] h-[4rem] drop-shadow-lg  ${active ? 'block' : 'hidden'}`} alt="panda_logo" />
                 
@@ -23,27 +27,27 @@ export const Sidebar = () => {
             <Separator />
             <ul className={`bg-green-panda shadow-xl transition-all rounded-md p-3 mt-4 ${active && 'w-full'}`}>
                 <Link href={`/admin-dashboard/customers`} className='flex gap-3 items-center'>
-                    <FaUser className='text-xl' />
+                    <FaUser className='text-xl transition-all ease-in-out hover:-translate-y-1 hover:scale-110 cursor-pointer' />
                     <p className={`text-xl font-medium ${!active && 'hidden'}`}>Customers</p>
                 </Link>
-                <li className='flex gap-3 items-center mt-5'>
-                    <FaUserGear className='text-xl' />
+                <Link href={`/admin-dashboard/technicians`} className='flex gap-3 items-center mt-5'>
+                    <FaUserGear className='text-xl transition-all ease-in-out hover:-translate-y-1 hover:scale-110 cursor-pointer' />
                     <p className={`text-xl font-medium ${!active && 'hidden'}`}>Technicians</p>
-                </li>
-                <li className='flex gap-3 items-center mt-5'>
-                    <FaUserPen className='text-xl' />
+                </Link>
+                <Link href={`/admin-dashboard/users`} className='flex gap-3 items-center mt-5'>
+                    <FaUserPen className='text-xl transition-all ease-in-out hover:-translate-y-1 hover:scale-110 cursor-pointer' />
                     <p className={`text-xl font-medium ${!active && 'hidden'}`}>Users</p>
-                </li>
+                </Link>
             </ul>
             <div className='w-full px-4 absolute bottom-4 transition-all'>
                 <div className='bg-green-panda shadow-xl p-3 rounded-md mb-4'>
                     <ul className=''>
-                        <li className='flex gap-3 items-center'>
-                            <FaChartSimple />
+                        <Link href={`/admin-dashboard/graphs`} className='flex gap-3 items-center'>
+                            <FaChartSimple className='text-xl transition-all ease-in-out hover:-translate-y-1 hover:scale-110 cursor-pointer' />
                             <p className={`text-xl font-medium ${!active && 'hidden'}`}>Charts</p>
-                        </li>
+                        </Link>
                         <li className='flex gap-3 items-center mt-5'>
-                            <FaGear />
+                            <FaGear className='text-xl transition-all ease-in-out hover:-translate-y-1 hover:scale-110 cursor-pointer' />
                             <p className={`text-xl font-medium transition-all ${!active && 'hidden'}`}>Configuration</p>
                         </li>
                     </ul>

@@ -1,11 +1,22 @@
-import { Table } from '@/components/Table'
-import React from 'react'
+import React from 'react';
+import { Table } from '@/components/Table';
+import { CardData } from '@/components/admin/cards/CardData';
 
 const Customers = () => {
   return (
-    <div className='container mx-auto px-3'>
-      <p className='text-xl text-black text-center md:text-left md:text-5xl font-bold py-6 tracking-[0.1em] drop-shadow-lg transition-all'>Customers Administration</p>
+    <div className='container mx-auto px-3 md:px-0 mb-8'>
+      <p
+        className='text-xl md:text-3xl text-center bg-white text-zinc-800 dark:text-white dark:bg-zinc-800 rounded-b-lg font-bold py-6 tracking-[0.1em] drop-shadow-lg transition-all'
+      >
+      Customers Management
+      </p>
       {/* Todo: Cards */}
+    
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-2 my-6 place-items-center'>
+        <CardData mode='total' />
+        <CardData mode='active' />
+        <CardData mode='inactive' />
+      </div>
 
       {/* Todo: searchInput */}
 
@@ -34,12 +45,12 @@ const Customers = () => {
       </div>
       <div className='flex flex-col md:flex-row items-center justify-between w-full gap-4'>
         <div className='flex flex-row items-center mt-4 dark:text-gray-800 font-medium tab-pagination shadow-lg '>
-          <span className='rounded-l-lg border-2 bg-green-panda hover:bg-[#2e966a] p-2 dark:bg-zinc-800 dark:text-white dark:border-white dark:hover:bg-green-panda dark:hover:text-black cursor-pointer transition-all'>Previous</span>
-          <p className='p-2 bg-green-panda hover:bg-[#2e966a] dark:bg-zinc-800 dark:text-white border-y-2 dark:hover:bg-green-panda dark:hover:text-black cursor-pointer transition-all'>1</p>
-          <p className='p-2 bg-green-panda hover:bg-[#2e966a] dark:bg-zinc-800 dark:text-white border-y-2 dark:hover:bg-green-panda dark:hover:text-black cursor-pointer transition-all'>2</p>
-          <p className='p-2 bg-green-panda hover:bg-[#2e966a] dark:bg-zinc-800 dark:text-white border-y-2 dark:hover:bg-green-panda dark:hover:text-black cursor-pointer transition-all'>3</p>
-          <p className='p-2 bg-green-panda hover:bg-[#2e966a] dark:bg-zinc-800 dark:text-white border-y-2 dark:hover:bg-green-panda dark:hover:text-black cursor-pointer transition-all'>4</p>
-          <span className='rounded-r-lg border-2 bg-green-panda hover:bg-[#2e966a] p-2 dark:bg-zinc-800 dark:text-white dark:border-white dark:hover:bg-green-panda dark:hover:text-black cursor-pointer transition-all'>Next</span>
+          <span className='rounded-l-lg border-2 bg-white text-black hover:text-white hover:bg-green-panda p-2 dark:bg-zinc-800 dark:text-white dark:border-white dark:hover:bg-green-panda dark:hover:text-black cursor-pointer transition-all'>Previous</span>
+          <p className='p-2 bg-white text-black hover:bg-green-panda hover:text-white dark:bg-zinc-800 dark:text-white border-y-2 dark:hover:bg-green-panda dark:hover:text-black cursor-pointer transition-all'>1</p>
+          <p className='p-2 bg-white text-black hover:bg-green-panda hover:text-white dark:bg-zinc-800 dark:text-white border-y-2 dark:hover:bg-green-panda dark:hover:text-black cursor-pointer transition-all'>2</p>
+          <p className='p-2 bg-white text-black hover:bg-green-panda hover:text-white dark:bg-zinc-800 dark:text-white border-y-2 dark:hover:bg-green-panda dark:hover:text-black cursor-pointer transition-all'>3</p>
+          <p className='p-2 bg-white text-black hover:bg-green-panda hover:text-white dark:bg-zinc-800 dark:text-white border-y-2 dark:hover:bg-green-panda dark:hover:text-black cursor-pointer transition-all'>4</p>
+          <span className='rounded-r-lg border-2 bg-white text-black hover:text-white hover:bg-green-panda p-2 dark:bg-zinc-800 dark:text-white dark:border-white dark:hover:bg-green-panda dark:hover:text-black cursor-pointer transition-all'>Next</span>
         </div>
         <div className='flex gap-3 drop-shadow-lg'>
           <p className='font-bold dark:text-white text-black'>rows per page</p>

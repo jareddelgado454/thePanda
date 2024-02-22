@@ -1,15 +1,30 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import {
     FaTrashCan,
-    FaPencil
+    FaPencil,
+    FaPersonCircleCheck,
+    FaPersonCircleMinus
 } from 'react-icons/fa6';
+import { useDisclosure } from "@nextui-org/react";
 import { Customers } from '../assets/data/Customer';
+import { CustomerModal } from './admin/Customer/CustomerModal';
 
 export const Table = () => {
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const [mode, setMode] = useState('create');
+
+    const handleOpenModal = (mode) => {
+        
+        onOpen();
+        setMode(mode);
+
+    }
+
   return (
-    <div className="relative overflow-x-auto rounded-md shadow-lg ">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500  transition-all">
-            <thead className="text-xs text-gray-700 dark:text-white uppercase rounded-md bg-gray-50 dark:bg-zinc-800">
+    <div className="relative overflow-x-auto rounded-lg shadow-lg p-6 bg-white dark:bg-zinc-800">
+        <table className="w-full text-sm text-left rtl:text-right  transition-all">
+            <thead className="text-xs text-gray-700 dark:text-white uppercase rounded-lg bg-zinc-200 dark:bg-zinc-800">
                 <tr>
                     <th scope="col" className="px-6 py-3 w-20">
                         IMAGE
@@ -34,7 +49,7 @@ export const Table = () => {
             <tbody>
                 {
                     Customers.map((Customer, i) => (
-                        <tr className={`bg-white border-b ${i % 2 === 0 ? 'dark:bg-zinc-900' : 'dark:bg-zinc-800'} dark:border-[#40C48E] dark:text-white dark:font-medium`}
+                        <tr className={`bg-white border-b text-gray-700 dark:bg-zinc-800 dark:border-[#40C48E] dark:text-white dark:font-medium`}
                             key={i}
                         >
                             <th
@@ -44,7 +59,7 @@ export const Table = () => {
                                 <img
                                     src={Customer.image}
                                     alt="logo_image"
-                                    className='w-[2rem] h-[2rem] rounded-full object-cover bg-center'
+                                    className='w-[2rem] h-[2rem] rounded-lg object-cover bg-center'
                                 />
                             </th>
                             <td className="px-6 py-4">
@@ -56,7 +71,7 @@ export const Table = () => {
                             <td className="px-6 py-4">
                                 <div>
                                     <p
-                                        className={`border-2 ${Customer.status === 'Active' ? 'dark:border-emerald-700 dark:text-emerald-700' : 'dark:border-rose-600 dark:text-rose-600'} py-1 font-medium rounded-md brightness-125 w-20 flex justify-center`}
+                                        className={`py-1 font-medium rounded-2xl brightness-125 w-20 flex justify-center ${Customer.status === 'Active' ? 'bg-emerald-700 text-green-500' : 'bg-rose-700 text-rose-300'}`}
                                     >
                                         {Customer.status}
                                     </p>
@@ -76,15 +91,34 @@ export const Table = () => {
                                     <button
                                         type='button'
                                         className='bg-yellow-400 p-2 rounded text-white'
+                                        onClick={() => handleOpenModal('edit')}
                                     >
                                         <FaPencil />
                                     </button>
+                                    {
+                                        Customer.status === "Active" ? (
+                                            <button
+                                                type='button'
+                                            >
+                                                <FaPersonCircleCheck className='text-2xl text-emerald-400' />
+                                            </button>
+
+                                        ) : (
+
+                                            <button
+                                                type='button'
+                                            >
+                                                <FaPersonCircleMinus className='text-2xl text-rose-600' />
+                                            </button>
+                                        )
+                                    }
                                 </div>
                             </td>
                         </tr>
                     ))
                 }
             </tbody>
+            <CustomerModal isOpen={isOpen} onOpenChange={onOpenChange} mode={mode} />
         </table>
     </div>
   )
