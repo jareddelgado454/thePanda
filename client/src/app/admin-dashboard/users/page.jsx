@@ -1,8 +1,29 @@
-import React from 'react';
+"use client";
+import React, { useEffect } from 'react';
+import { generateClient } from 'aws-amplify/api';
 import { Table } from '@/components/Table';
 import { CardData } from '@/components/admin/cards/CardData';
+import { getBlog } from '../../../graphql/queries';
+
+const client = generateClient();
 
 const Users = () => {
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
+  async function fetchTodos() {
+    try {
+      const todoData = await client.graphql({
+        query: getBlog,
+      });
+      console.log(todoData);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className='container mx-auto px-3 md:px-0 mb-8'>
       <p

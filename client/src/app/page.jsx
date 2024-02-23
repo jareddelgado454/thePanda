@@ -44,7 +44,7 @@ const Home = () => {
                               <span className="text-emerald-900">LOGIN</span> to see more
                             </h2>
                             <button
-                              className="w-[50%] bg-emerald-600 hover:bg-emerald-700 transition-colors delay-50 text-white  mb-2  hover:text-white text-primary rounded-2xl flex gap-x-2 items-center justify-center py-2 px-5"
+                              className="w-[50%] bg-emerald-600 hover:bg-emerald-700 transition-colors delay-50 text-white  mb-2  hover:text-white rounded-2xl flex gap-x-2 items-center justify-center py-2 px-5"
                             >
                               <RiGoogleFill /> Enter with Google
                             </button>

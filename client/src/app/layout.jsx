@@ -1,8 +1,14 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { robotoFlex } from "./font";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Amplify } from 'aws-amplify';
+import config from '../amplifyconfiguration.json';
+
+Amplify.configure(config);
+
+Amplify.configure({
+  Analytics: true
+})
 
 export const metadata = {
   title: "Create Next App",
