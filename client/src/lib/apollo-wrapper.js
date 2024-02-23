@@ -8,7 +8,7 @@ function makeClient()
 {
 
     const httpLink = new HttpLink({
-        uri: "https://rickandmortyapi.com/graphql"
+        uri: "http://localhost:5000"
     });
 
     return new NextSSRApolloClient({

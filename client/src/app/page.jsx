@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { gql } from "@apollo/client";
-import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
+import { gql, useMutation } from "@apollo/client";
+import {  } from "@apollo/experimental-nextjs-app-support/ssr";
 import LandingNavBar from "@/components/LandingNavBar";
 import {
   RiMailLine,
@@ -10,23 +10,47 @@ import {
   RiEyeOffLine,
   RiGoogleFill,
 } from "react-icons/ri";
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 
-const query = gql`
-  query {
-    characters(page: 1) {
-      results {
-        name
-        image
-      }
+const mutation = gql`
+  mutation($email: String!, $password: String!){
+    login(email: $email, password: $password) {
+        id
+        email
+        createdAt
+        token
     }
   }
 `;
 
 const Home = () => {
 
-  const { data } = useSuspenseQuery(query);
+  const initialValue = {
+    email: '',
+    password: ''
+  }
 
-  console.log(data);
+  const onHandleSubmit = async (values, { resetForm }) => {
+    try {
+      await loginUser({
+        variables: {
+          email: values.email,
+          password: values.password
+        }
+      });
+      // Resetear el formulario después de que la mutación se complete con éxito
+      resetForm();
+    } catch (error) {
+      // Manejar errores aquí
+      console.error('Error during login:', error);
+    }
+  };
+
+  const [ loginUser ] = useMutation(mutation, {
+    update(_, { data }) {
+        console.log(data);
+    }
+  })
 
   const [showPassword, setShowPassword] = useState(false);
   return (
@@ -66,46 +90,55 @@ const Home = () => {
                   </button>
                   <p className="mb-4">Or Sign in with your account</p>
 
-                  <form onSubmit="" className="mb-7  w-[80%]">
-                    <div className="relative mb-3">
-                      <RiMailLine className="absolute left-2 top-4 text-zinc-900" />
-                      <input
-                        type="email"
-                        name="email"
-                        className="py-3 pl-8 pr-4 bg-white w-full outline-none rounded-2xl mb-4"
-                        placeholder="E-mail"
-                      />
-                    </div>
-                    <div className="relative mb-4">
-                      <RiLockLine className="absolute left-2 top-4 text-zinc-900" />
-                      <input
-                        type={showPassword ? "text" : "password"}
-                        name="password"
-                        className="py-3 px-8 bg-white w-full outline-none rounded-2xl mb-4 "
-                        placeholder="Password"
-                      />
-                      {showPassword ? (
-                        <RiEyeLine
-                          onClick={() => setShowPassword(!showPassword)}
-                          className="absolute top-6 -translate-y-1/2 right-2 hover:cursor-pointer text-primary"
-                        />
-                      ) : (
-                        <RiEyeOffLine
-                          onClick={() => setShowPassword(!showPassword)}
-                          className="absolute top-6 -translate-y-1/2 right-2 hover:cursor-pointer text-primary"
-                        />
-                      )}
-                    </div>
-                    <div>
-                      <button
-                        type="submit"
-                        className="bg-zinc-800 hover:bg-zinc-900 cursor-pointer font-bold text-white text-[18px] w-full py-3 px-4 rounded-lg transition-colors delay-50"
-                      >
-                        Login
-                      </button>
-                    </div>
-                    <span></span>
-                  </form>
+                  <Formik
+                    initialValues={initialValue}
+                    onSubmit={onHandleSubmit}
+                  >
+                    {({ handleSubmit }) => (
+                      <Form onSubmit={handleSubmit} className="mb-7  w-[80%]">
+                        <div className="relative mb-3">
+                          <RiMailLine className="absolute left-2 top-4 text-zinc-900" />
+                          <Field
+                            type="email"
+                            name="email"
+                            className="py-3 pl-8 pr-4 bg-white w-full outline-none rounded-2xl mb-4"
+                            placeholder="E-mail"
+                          />
+                        </div>
+                        <div className="relative mb-4">
+                          <RiLockLine className="absolute left-2 top-4 text-zinc-900" />
+                          <Field
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            className="py-3 px-8 bg-white w-full outline-none rounded-2xl mb-4 "
+                            placeholder="Password"
+                          />
+                          {showPassword ? (
+                            <RiEyeLine
+                              onClick={() => setShowPassword(!showPassword)}
+                              className="absolute top-6 -translate-y-1/2 right-2 hover:cursor-pointer text-primary"
+                            />
+                          ) : (
+                            <RiEyeOffLine
+                              onClick={() => setShowPassword(!showPassword)}
+                              className="absolute top-6 -translate-y-1/2 right-2 hover:cursor-pointer text-primary"
+                            />
+                          )}
+                        </div>
+                        <div>
+                          <button
+                            type="submit"
+                            className="bg-zinc-800 hover:bg-zinc-900 cursor-pointer font-bold text-white text-[18px] w-full py-3 px-4 rounded-lg transition-colors delay-50"
+                          >
+                            Login
+                          </button>
+                        </div>
+                        <span></span>
+                      </Form>
+                    )}
+                  </Formik>
+
+      
                   <p className="text-primary/80 mb-6 hover:text-primary cursor-pointer">
                     Have you forgotten the password?
                   </p>
