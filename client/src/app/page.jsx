@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import {  } from "@apollo/experimental-nextjs-app-support/ssr";
+import { LOGIN_USER } from "@/graphql/users/mutation";
 import LandingNavBar from "@/components/LandingNavBar";
 import {
   RiMailLine,
@@ -12,16 +13,6 @@ import {
 } from "react-icons/ri";
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
-const mutation = gql`
-  mutation($email: String!, $password: String!){
-    login(email: $email, password: $password) {
-        id
-        email
-        createdAt
-        token
-    }
-  }
-`;
 
 const Home = () => {
 
@@ -38,15 +29,13 @@ const Home = () => {
           password: values.password
         }
       });
-      // Resetear el formulario después de que la mutación se complete con éxito
       resetForm();
     } catch (error) {
-      // Manejar errores aquí
-      console.error('Error during login:', error);
+      console.error( error);
     }
   };
 
-  const [ loginUser ] = useMutation(mutation, {
+  const [ loginUser ] = useMutation(LOGIN_USER, {
     update(_, { data }) {
         console.log(data);
     }
