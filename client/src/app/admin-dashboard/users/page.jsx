@@ -1,8 +1,18 @@
-import React from 'react';
+"use client";
+import React, { useEffect } from 'react';
 import { Table } from '@/components/Table';
 import { CardData } from '@/components/admin/cards/CardData';
+import { listUsers } from '@/graphql/queries'
+import { useQuery } from '@apollo/client';
 
 const Users = () => {
+
+  const { loading, error, data } = useQuery(listUsers);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <div className='container mx-auto px-3 md:px-0 mb-8'>
       <p

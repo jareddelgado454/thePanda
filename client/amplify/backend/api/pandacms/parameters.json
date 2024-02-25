@@ -1,0 +1,7 @@
+{
+  "AppSyncApiName": "pandacms",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2024-02-24T23:49:17.762Z",
+  "CreateAPIKey": 0
+}

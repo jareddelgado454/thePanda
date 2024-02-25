@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "pandacms",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 15,
+      "apiKeyExpirationDate": "2024-03-10T23:49:12.280Z",
+      "keyDescription": "auth"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
+  }
+}

@@ -8,7 +8,10 @@ function makeClient()
 {
 
     const httpLink = new HttpLink({
-        uri: "http://localhost:5000"
+        uri: "https://gulfhzjdj5g6fix5vlanmqmope.appsync-api.us-east-1.amazonaws.com/graphql",
+        headers: {
+            'x-api-key' : 'da2-b4oselcykzcdpg6hnbmn6w6znm'
+        }
     });
 
     return new NextSSRApolloClient({
