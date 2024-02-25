@@ -9,7 +9,7 @@ import {
   RiEyeOffLine,
   RiGoogleFill,
 } from "react-icons/ri";
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form, Field } from 'formik'
 
 const mutation = gql`
   mutation($email: String!, $password: String!){
@@ -29,27 +29,27 @@ const Home = () => {
     password: ''
   }
 
-  // const onHandleSubmit = async (values, { resetForm }) => {
-  //   try {
-  //     await loginUser({
-  //       variables: {
-  //         email: values.email,
-  //         password: values.password
-  //       }
-  //     });
-  //     // Resetear el formulario después de que la mutación se complete con éxito
-  //     resetForm();
-  //   } catch (error) {
-  //     // Manejar errores aquí
-  //     console.error('Error during login:', error);
-  //   }
-  // };
+  const onHandleSubmit = async (values, { resetForm }) => {
+    try {
+      await loginUser({
+        variables: {
+          email: values.email,
+          password: values.password
+        }
+      });
+      // Resetear el formulario después de que la mutación se complete con éxito
+      resetForm();
+    } catch (error) {
+      // Manejar errores aquí
+      console.error('Error during login:', error);
+    }
+  };
 
-  // const [ loginUser ] = useMutation(mutation, {
-  //   update(_, { data }) {
-  //       console.log(data);
-  //   }
-  // })
+  const [ loginUser ] = useMutation(mutation, {
+    update(_, { data }) {
+        console.log(data);
+    }
+  })
 
   const [showPassword, setShowPassword] = useState(false);
   return (
@@ -89,7 +89,7 @@ const Home = () => {
                   </button>
                   <p className="mb-4">Or Sign in with your account</p>
 
-                  {/* <Formik
+                  <Formik
                     initialValues={initialValue}
                     onSubmit={onHandleSubmit}
                   >
@@ -135,7 +135,7 @@ const Home = () => {
                         <span></span>
                       </Form>
                     )}
-                  </Formik> */}
+                  </Formik>
 
       
                   <p className="text-primary/80 mb-6 hover:text-primary cursor-pointer">
